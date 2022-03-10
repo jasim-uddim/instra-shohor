@@ -5,6 +5,7 @@ const reportedPostsId = [];
 
 const getLikedPosts = () => {
     return posts.filter((post) => likedPostsId.includes(post.id));
+    
 };
 
 const getReportedPosts = () => {
@@ -52,7 +53,9 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
+  const userImage=post.userImage;
     const image = post.image;
+  
     const div = document.createElement( "article" );
     div.classList.add( "post" );
     div.innerHTML = `
@@ -63,7 +66,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -138,6 +141,7 @@ const showPosts = (posts) => {
     productsContainer.innerHTML = "";
 
     posts.forEach((post) => {
+      console.log(post)
         const div = createPost(post);
         productsContainer.appendChild(div);
     });
